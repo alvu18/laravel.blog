@@ -164,66 +164,42 @@
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
                     <li class="nav-item">
                         <a href="{{route('admin.index')}}" class="nav-link">
                             <i class="nav-icon fas fa-home"></i>
                             <p>Главная</p>
                         </a>
                     </li>
+
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
                                 Layout Options
                                 <i class="fas fa-angle-left right"></i>
-                                <span class="badge badge-info right">6</span>
+                                <span class="badge badge-info right">2</span>
                             </p>
                         </a>
+
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="../layout/top-nav.html" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Top Navigation</p>
+                                    <p>Категории</p>
                                 </a>
                             </li>
+
                             <li class="nav-item">
                                 <a href="../layout/top-nav-sidebar.html" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Top Navigation + Sidebar</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="../layout/boxed.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Boxed</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="../layout/fixed-sidebar.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Fixed Sidebar</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="../layout/fixed-topnav.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Fixed Navbar</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="../layout/fixed-footer.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Fixed Footer</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="../layout/collapsed-sidebar.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Collapsed Sidebar</p>
+                                    <p>Новая категория</p>
                                 </a>
                             </li>
                         </ul>
+
                     </li>
+
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
@@ -231,7 +207,7 @@
         <!-- /.sidebar -->
     </aside>
 
-@yield('content')
+    @yield('content')
 
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
@@ -248,5 +224,19 @@
     <!-- /.control-sidebar -->
 </div>
 <script src="{{asset('assets/admin/js/admin.js')}}"></script>
+<script>
+    $('.nav-slidebar a').each (function() {
+
+        let location = window.location.protocol + '//' + window.location.host +
+            window.location.pathname;
+
+        let link = this.href;
+        if (link == location){
+
+            $(this).addClass('active');
+            $(this).closest('.has.has-treeview').addClass('menu-open');
+        }
+    });
+</script>
 </body>
 </html>
